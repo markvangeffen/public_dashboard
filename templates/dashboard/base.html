@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <title>Dashboard GGzE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Load an icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="#">
+  </head>
+
+  <body>
+
+      <!-- Sidenavigation bar -->
+      <div class="sidenav">
+        <a href="/">
+          <img src="{% static 'images/Logo_bal.png' %}" alt="GGzE" class="sidenav_logo_img">
+        </a>
+        <a href="/persoonlijk">
+          <i class="fa fa-fw fa-male"></i>
+            <not_visible> Persoonlijk </not_visible>
+        </a>
+        {% block sidenav %}
+        {% endblock sidenav %}       
+        <a href="/organisatie">
+          <i class="fa fa-fw fa-envelope"></i>
+            <not_visible> Organisatie </not_visible>
+        </a>
+      </div>
+
+      <!-- DIV with CSS to enclose all DIV's to the same size as the SideNav Bar -->
+      <div class="sidenav_helper">
+        
+        <!-- Note -->
+        <!-- <div style="background:yellow;padding:5px">
+          <h4 style="text-align:center">Resize the browser window to see the responsive effect.</h4>
+        </div> -->
+
+        <!-- Header -->
+        <!-- <div class="header">
+          <h3>Goededag Mark van Geffen</h3> 
+          <p>With a <b>flexible</b> layout.</p>
+        </div> -->
+
+        <!-- Top Navigation Bar -->
+        <div class="top_navbar">
+          <div class="top_navbar_left">
+            <ul>
+              <li><a href="/#default.asp">Home</a></li>
+              <li><a href="/#news.asp">News</a></li>
+              <li><a href="/#contact.asp">Contact</a></li>
+              <li><a href="/#contact.asp">Contact</a></li>
+            </ul>
+          </div>
+          <div class="top_navbar_right">
+            <ul>
+              <li class="top_navbar_text">Goedemiddag Mark van Geffen</li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The flexible grid (content) -->
+        <div class="content">
+          {% block first_left_block_content %}
+          {% endblock first_left_block_content %}
+          {% block first_right_block_content %}
+          {% endblock first_right_block_content %}
+          {% block second_left_block_content %}
+          {% endblock second_left_block_content %}
+          {% block second_right_block_content %}
+          {% endblock second_right_block_content %}
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <h2>Footer</h2>
+        </div>
+
+      </div>
+    </body>
+    {% block js %}
+    {% endblock js %}
+</html>
+
+
+

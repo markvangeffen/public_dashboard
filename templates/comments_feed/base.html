@@ -1,0 +1,52 @@
+{% extends "dashboard/base.html" %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+{% load static %}
+
+{% block sidenav %}
+  <a href="/teams">
+    <i class="fa fa-fw fa-users"></i>
+      <not_visible> Teams </not_visible>
+  </a>
+  <a href="/clusters">
+    <i class="fa fa-fw fa-sitemap"></i>
+      <not_visible> Clusters </not_visible>
+  </a>
+{% endblock sidenav %}
+
+{% block first_left_block_content %}
+    <section class="hero is-info">
+        <div class="hero-head">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start pl-2">
+                <a href="/" class="navbar-item">Home</a>
+            </div>
+            <div class="navbar-end pr-2">
+                <div class="navbar-item">
+                </div>
+            </div>
+            </div>
+        </nav>  
+        <div class="hero-body">
+            <div class="container has-text-centered">
+            <p class="title">{% block main_title %}{% endblock %}</p>
+            <p class="subtitle">{% block sub_title %}{% endblock %}</p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+        {% block content %}{% endblock %}
+        </div>
+    </section>
+{% endblock first_left_block_content %}
+
+{% block first_right_block_content %}
+{% endblock first_right_block_content %}
+
+{% block second_left_block_content %}
+{% endblock second_left_block_content %}
+
+{% block second_right_block_content %}
+{% endblock second_right_block_content %}

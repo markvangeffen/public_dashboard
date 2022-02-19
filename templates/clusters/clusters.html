@@ -1,0 +1,90 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block sidenav %}
+  <a href="/teams">
+    <i class="fa fa-fw fa-users"></i>
+      <not_visible> Teams </not_visible>
+  </a>
+  <a href="/clusters" onclick="return false;">
+    <i onclick="showdiv('clusters');" class="fa fa-fw fa-sitemap"></i>
+      <not_visible onclick="showdiv('clusters');"> Clusters </not_visible>
+  </a>
+    <ul id="clusters">
+      {% for organisatie in object_list %}
+        <li>{{ organisatie.nummer }}</li>
+      {% endfor %}
+    </ul>
+{% endblock sidenav %}
+
+{% block first_left_block_content %}
+  <div class="left_row_content">
+    <h2>About Me</h2>
+    <h5>Photo of me:</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    <h3>More Text</h3>
+    <p>Lorem ipsum dolor sit ame.</p>
+    <div class="fakeimg" style="height:60px;">Image</div><br>
+    <div class="fakeimg" style="height:60px;">Image</div><br>
+    <div class="fakeimg" style="height:60px;">Image</div>
+  </div>
+{% endblock first_left_block_content %}
+
+{% block first_right_block_content %}
+  <div class="right_row_content">
+    <h2>TITLE HEADING</h2>
+    <h5>Title description, Dec 7, 2017</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Some text..</p>
+    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <br>
+    <h2>TITLE HEADING</h2>
+    <h5>Title description, Sep 2, 2017</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Some text..</p>
+    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  </div>
+{% endblock first_right_block_content %}
+
+{% block second_left_block_content %}
+  <div class="left_row_content">
+    <h2>Content for My AppContent for My AppContent for My AppContent for My AppContent for My AppContent for My AppContent for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>    <h2>Content for My App</h2>
+  </div>
+{% endblock second_left_block_content %}
+
+{% block second_right_block_content %}
+  <div class="right_row_content">
+    <h2>Content for My AppContent for My AppContent for My AppContent for My AppContent for My AppContent for My AppContent for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>
+    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>    <h2>Content for My App</h2>
+    <p>Stuff etc etc.</p>    <h2>Content for My App</h2>
+  </div>
+{% endblock second_right_block_content %}
+
+{% block js %}
+<script src="/static/js/sidebars.js"></script>
+{% endblock js %}

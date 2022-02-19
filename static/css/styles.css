@@ -1,0 +1,273 @@
+
+/* Variabels for sidennav_width*/
+:root {
+  --sidenav_width: 15vw;
+  --top_navbar_width: 5vw;
+  --white: #ffffff; 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Content container */
+.content {  
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--top_navbar_width); /* als header uitstaat, aanzetten, anders weglaten*/
+
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  font-weight: bold;
+}
+
+/* Header/logo Title */
+/* .header {
+  padding: 1px;
+  margin-top: 50px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+} */
+
+/* Create two unequal columns that sits next to each other for the content of the website*/
+/* Left row column */
+.left_row_content {
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 2vw;
+}
+
+/* Style the side navigation bar */
+.sidenav {
+  display: nowrap;
+  height: 100%;
+  width: var(--sidenav_width); /* Same as the width of the sidenav */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* padding-top: 20px; */
+}
+
+/* Style the side navigation bar list items */
+.sidenav li {
+  padding: 0px 4px 0px 0px;
+  text-decoration: none;
+  font-size: small;
+  color: white;
+  display: block;
+}
+
+/* Style the side navigation bar links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: medium;
+  color: white;
+  display: block;
+}
+
+/* Style the side navigation bar links on hover */
+.sidenav a:hover {
+  color: rgb(24, 70, 130);
+}
+
+/* Div to enclose the content of the website right of the side navbar*/
+.sidenav_helper {
+  margin-left: var(--sidenav_width); /* Same as the width of the sidenav */
+}
+
+/* Style the logo image */
+.sidenav_logo_img {
+  margin-left: 2vw;
+  width: 5vw;
+  height: auto; 
+  object-fit: cover;
+  /* mix-blend-mode: multiply; */
+}
+
+/* Style the organisation items */
+.sidenav ul {
+  margin: 0px;
+  padding: 0px 0px 0px 40px;
+}
+
+/* Style the organisation items */
+.sidenav ul li {
+  display: block;
+  padding: 4px 4px 0px 0px;
+  text-decoration: none;
+  font-size: small;
+  color: white;
+}
+
+/* Style the side navigation bar links on hover */
+.sidenav ul li:hover {
+  color: rgb(24, 70, 130);
+}
+
+/* Style the top navigation bar */
+.top_navbar {
+  display: flex;
+  background-color: #333;
+  position: fixed;
+  width: calc(100% - var(--sidenav_width)); /* Same as the width of the sidenav */
+  height: var(--top_navbar_width);
+  top: 0;
+  overflow: hidden;
+}
+
+/* Style the top navigation bar left links*/
+.top_navbar_left {
+  display: flex;
+  flex: 50%;
+} 
+
+/* Style the top navigation bar right links */
+.top_navbar_right {
+  display: flex;
+  flex: 50%;
+  justify-content: flex-end;
+}
+
+/* Style the top navigation bar text */
+.top_navbar_text {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Style the top navigation bar links */
+.top_navbar a {
+  display: flex;
+  color: white;
+  font-size: medium;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Style the top navigation bar links */
+.top_navbar li {
+  color: white;
+  float: left;
+  text-decoration: none;
+  /* text-align: center; */
+}
+
+/* Style the unordered list in the navbar */
+.top_navbar ul {
+/* list-style-type: none; */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Change color of the top naviagation bar on hover */
+.top_navbar a:hover {
+  color: rgb(24, 70, 130);
+}
+
+/* Create two unequal columns that sits next to each other for the content of the website */
+/* Right row column */
+.right_row_content {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+}
+
+/* Responsive layout - when the screen is less than 775px wide, make the two columns 
+stack on top of each other instead of next to each other */
+
+    /* Size the side navbar widht */
+    @media screen and (max-width: 870px) {
+      .sidenav, .sidenav_helper, .top_navbar {   
+        --sidenav_width: 20vw;
+        --top_navbar_width: 15vw;
+      }
+    }
+
+    /* Set the top navbar and content to column starting from the first element */
+    @media screen and (max-width: 870px) {
+      .content, .top_navbar, .top_navbar_right {   
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+    
+    /* Change the sizing of the anchors and the top navbar */
+    @media screen and (max-width: 870px) {
+      .sidenav a, .top_navbar a, .top_navbar_text {   
+        display: flex;
+        color: white; 
+        font-size: medium;
+        justify-content: space-evenly;
+        padding: 4px 6px;
+        text-align: left;
+      }
+    }
+    
+    /* Change the sizing of the links in the side navbar */
+    @media screen and (max-width: 870px) {
+      .sidenav li {   
+        display: flex;
+        color: white; 
+        font-size: xx-small;
+        justify-content: space-evenly;
+        padding: 4px 6px;
+        text-align: left;
+      }
+    }
+
+    /* Set the unordered list and links in line with the anchor tags */
+    @media screen and (max-width: 870px) {
+      .sidenav ul, .sidenav ul li {   
+        justify-content: flex-start;
+        padding: 4px 4px;
+        text-align: center;
+      }
+    }
+    
+    /* Hide the sidenav text, only show the icons */
+    @media screen and (max-width: 870px) {
+      .sidenav not_visible{   
+        display: none !important;
+      }
+    }
+    
+    /* Set the icon in the middle */
+    @media screen and (max-width: 870px) {
+      .sidenav_logo_img {
+        margin-left: 0vw; 
+      }
+    }

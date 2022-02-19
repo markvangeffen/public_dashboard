@@ -1,0 +1,66 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block sidenav %}
+  <a href="/teams">
+    <i class="fa fa-fw fa-users"></i>
+      <not_visible> Teams </not_visible>
+  </a>
+  <a href="/clusters">
+    <i class="fa fa-fw fa-sitemap"></i>
+      <not_visible> Clusters </not_visible>
+  </a>
+{% endblock sidenav %}
+
+{% block first_left_block_content %}
+  <div  class="left_row_content">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+      </table>
+        <input type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </div>
+{% endblock first_left_block_content %}
+
+{% block first_right_block_content %}
+  <div class="right_row_content">
+    {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+      {% if user.is_authenticated %}
+        <p >Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+      {% else %}
+        <p>Please login to see this page.</p>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endblock first_right_block_content %}
+
+{% block second_left_block_content %}
+  <div class="left_row_content">
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  </div>
+{% endblock second_left_block_content %}
+
+{% block second_right_block_content %}
+  <div class="right_row_content">
+  </div>
+{% endblock second_right_block_content %}
+
+{% block js %}
+<script src="/static/js/sidebars.js"></script>
+{% endblock js %}
