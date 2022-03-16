@@ -13,8 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import include, path
+from authO.views import logout
 from homepage.views import HomepageListView
 from persoonlijk.views import PersoonlijkView
 from teams.views import TeamsView
@@ -23,6 +25,7 @@ from organisatie.views import OrganisatieView
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('authO.urls')),  
     path('', include('social_django.urls')),
     path('admin/', admin.site.urls),
     path('', HomepageListView.as_view(), name='home'),

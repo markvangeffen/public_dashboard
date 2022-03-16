@@ -113,8 +113,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR / "static", ]
 
 try:
-    execfile(os.path.join(
+    exec(open(os.path.join(
         os.path.dirname(__file__), "local_settings.py"
-    ))
+    )).read())
 except IOError:
     pass

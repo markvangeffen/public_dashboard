@@ -51,13 +51,19 @@
             <ul>
               <li><a href="/#default.asp">Home</a></li>
               <li><a href="/#news.asp">News</a></li>
-              <li><a href="/#contact.asp">Contact</a></li>
-              <li><a href="/#contact.asp">Contact</a></li>
+              <li><a href="/comments_feed/">Comments_feed</a></li>
+              <li><a href="/gerapporteerde_comments/">Gerapporteerde_comments</a></li>
             </ul>
           </div>
           <div class="top_navbar_right">
             <ul>
-              <li class="top_navbar_text">Goedemiddag Mark van Geffen</li>
+              {% if request.user.is_authenticated == False %}
+              <li><a class="nav-link" href="/login/auth0">Log In</a></li>
+              {% endif %}
+              {% if request.user.is_authenticated == True %}
+              <li class="top_navbar_text">Goedemiddag {{ user.first_name }} {{ user.last_name }} </li>
+              <li><a href="/logout">Log Out</a></li>
+              {% endif %}
               <li><a href="#about">About</a></li>
             </ul>
           </div>
