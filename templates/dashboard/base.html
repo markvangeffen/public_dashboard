@@ -19,6 +19,7 @@
         <a href="/">
           <img src="{% static 'images/Logo_bal.png' %}" alt="GGzE" class="sidenav_logo_img">
         </a>
+        {% if request.user.is_authenticated == True %}
         <a href="/persoonlijk">
           <i class="fa fa-fw fa-male"></i>
             <not_visible> Persoonlijk </not_visible>
@@ -29,11 +30,12 @@
           <i class="fa fa-fw fa-envelope"></i>
             <not_visible> Organisatie </not_visible>
         </a>
+        {% endif %}
       </div>
 
       <!-- DIV with CSS to enclose all DIV's to the same size as the SideNav Bar -->
       <div class="sidenav_helper">
-        
+
         <!-- Note -->
         <!-- <div style="background:yellow;padding:5px">
           <h4 style="text-align:center">Resize the browser window to see the responsive effect.</h4>
@@ -49,10 +51,11 @@
         <div class="top_navbar">
           <div class="top_navbar_left">
             <ul>
-              <li><a href="/#default.asp">Home</a></li>
+              {% if request.user.is_authenticated == True %}
               <li><a href="/#news.asp">News</a></li>
               <li><a href="/comments_feed/">Comments_feed</a></li>
               <li><a href="/gerapporteerde_comments/">Gerapporteerde_comments</a></li>
+              {% endif %}
             </ul>
           </div>
           <div class="top_navbar_right">
