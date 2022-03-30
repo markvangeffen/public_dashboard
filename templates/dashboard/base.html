@@ -51,8 +51,11 @@
         <div class="top_navbar">
           <div class="top_navbar_left">
             <ul>
+              <!-- To check for all permissions of logged in USER: {{ perms.app_name }} -->
+              {% if request.user.is_authenticated == True and perms.auth.add_group == True and user.is_superuser %}
+              <li><a href="/admin">Admin console</a></li>
+              {% endif %}
               {% if request.user.is_authenticated == True %}
-              <li><a href="/#news.asp">News</a></li>
               <li><a href="/comments_feed/">Comments_feed</a></li>
               <li><a href="/gerapporteerde_comments/">Gerapporteerde_comments</a></li>
               {% endif %}
