@@ -1,9 +1,7 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect 
 from .forms import PostForm # add this
-
-# class CommentFeedView(TemplateView): 
-#     template_name = 'comments_feed/comments_feed.html'
+from .models import Post
 
 class GerapporteerdeCommentsView(TemplateView): 
     template_name = 'comments_feed/gerapporteerde_comments.html'
@@ -18,9 +16,18 @@ def CommentFeedView(request):
       return redirect('comments_feed')
   else:
     form = PostForm()
+    posts = Post.objects.filter(hidden=False).order_by('-date_posted').all()
 
-  context = {'form' : form}
+    context = {'form' : form, 'posts' : posts}
 
   return render(request, 'comments_feed/comments_feed.html', context)
 
-
+def delete_post(request, post_id):
+  # check if post belongs to user
+  post = Post.objects.get(id=post_id)
+  if post.user == request.user:
+      post.delete()
+  # remove it from the database
+  # redirect back to same page
+  return redirect('comments_feed')
+  

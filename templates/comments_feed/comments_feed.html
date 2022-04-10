@@ -1,5 +1,8 @@
 {% extends 'comments_feed/base.html' %}
 
+<!-- To make the time readable, i used 'django.contrib.humanize',. This is added to settings.py  -->
+{% load humanize %} 
+
 {% block title %}
     Home
 {% endblock %}
@@ -12,26 +15,50 @@
     Leave a message for everyone to see!
 {% endblock %}
 
-{% block content %} 
+{% block comments_feed %} 
     {% if request.user.is_authenticated == True %}
-        <form method="POST">
-            <article class="media">
-            <div class="media-content">
-                <div class="field">
-                <p class="control">
+            <form method="POST">
                     {% csrf_token %}
-                    <div class="field has-addons">
-                    <div class="control is-expanded">
+                        <br>
+                        <br>
                         {{ form.text }}
-                    </div>
-                    <div class="control">
+                        <br>
+                        <br>    
                         <button class="button is-info">Submit</button>
-                    </div>
-                    </div>
-                </p>
-                </div>
-            </div>
-            </article>
-        </form>
+            </form>
     {% endif %}
 {% endblock %}
+
+{% block second_left_block_content %}
+    <div class="left_row_content">
+        <table>
+        <thead>  
+            <tr>
+            <th>Commenter</th>
+            <th>Commented </th>
+            <th>Comment</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr> 
+                <td>{{ post.user.first_name }} {{ post.user.last_name }} </td>
+                <td>{{ post.date_posted|naturaltime }} </td>
+                <td>{{ post.text }} </td>
+                <!-- Check ik USER is authenticated, and if the USER is the commenter, if so, add column with delete -->
+                {% if request.user.is_authenticated == True and request.user == post.user %}
+                <td><a href="{% url 'delete_post' post.id %}">Delete</a></td>
+                {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>        
+{% endblock second_left_block_content %}
+
+{% block second_right_block_content %}
+    <div class="right_row_content">
+        <h1>30 / 70 test</h1>
+    </div>
+{% endblock second_right_block_content %}
