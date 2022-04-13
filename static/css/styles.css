@@ -2,6 +2,7 @@
 /* Variabels for sidennav_width*/
 :root {
   --sidenav_width: 15vw;
+  --left_row_content: 60%;
   --top_navbar_width: 5vw;
   --white: #ffffff; 
 }
@@ -57,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Create two unequal columns that sits next to each other for the content of the website*/
 /* Left row column */
 .left_row_content {
-  flex: 30%;
+  flex: var(--left_row_content); 
   background-color: #f1f1f1;
   padding: 2vw;
 }
@@ -201,7 +202,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Create two unequal columns that sits next to each other for the content of the website */
 /* Right row column */
 .right_row_content {
-      flex: 70%;
+      flex: calc(100% - var(--left_row_content));
       background-color: white;
       padding: 20px;
 }

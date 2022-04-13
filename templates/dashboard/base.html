@@ -20,13 +20,13 @@
           <img src="{% static 'images/Logo_bal.png' %}" alt="GGzE" class="sidenav_logo_img">
         </a>
         {% if request.user.is_authenticated == True %}
-        <a href="/persoonlijk">
+        <a href="{% url 'persoonlijk' %}">
           <i class="fa fa-fw fa-male"></i>
             <not_visible> Persoonlijk </not_visible>
         </a>
         {% block sidenav %}
         {% endblock sidenav %}       
-        <a href="/organisatie">
+        <a href="{% url 'organisatie' %}">
           <i class="fa fa-fw fa-envelope"></i>
             <not_visible> Organisatie </not_visible>
         </a>
@@ -51,13 +51,13 @@
         <div class="top_navbar">
           <div class="top_navbar_left">
             <ul>
-              <!-- To check for all permissions of logged in USER: {{ perms.app_name }} -->
-              {% if request.user.is_authenticated == True and perms.auth.add_group == True and user.is_superuser %}
+              <!-- To check for all permissions of logged in USER: {{ perms.app_name }} and perms.auth.add_group == True and user.is_superuser -->
+              {% if request.user.is_authenticated == True %}
               <li><a href="/admin">Admin console</a></li>
               {% endif %}
               {% if request.user.is_authenticated == True %}
-              <li><a href="/comments_feed/">Comments_feed</a></li>
-              <li><a href="/gerapporteerde_comments/">Gerapporteerde_comments</a></li>
+              <li><a href="{% url 'comments_feed' %}">Comments_feed</a></li>
+              <li><a href="{% url 'gerapporteerde_comments' %}">Gerapporteerde_comments</a></li>
               {% endif %}
             </ul>
           </div>

@@ -1,9 +1,25 @@
 {% extends 'comments_feed/base.html' %}
+{% load humanize %}
 
 {% block main_title %}Reported Posts{% endblock %}
+{% block sub_title %}{% endblock %}
 
-{% block second_left_block_content %}  
+{% block second_left_block_content %} 
+    <div class="left_row_content">
+    {% for post in reports %}
+            <p>
+                <strong>{{ post.user.first_name }} {{ post.user.last_name }}</strong> 
+                <small>{{ post.date_posted|naturaltime }}</small>
+                <a href="{% url 'block_user' post.user.id %}"><span class="tag is-warning">Block</span></a>
+            <br>
+            {{ post.text }} - Times reported: {{ post.times_reported }}
+            </p> 
+            <br>
+            <a class="delete"></a>
+    {% endfor %}
+    </div>
 {% endblock second_left_block_content %}
 
 {% block second_right_block_content %}
 {% endblock second_right_block_content %}
+

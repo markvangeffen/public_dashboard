@@ -27,7 +27,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('authO.urls')),  
     path('', include('social_django.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', HomepageListView.as_view(), name='home'),
     path('clusters/', ClustersView.as_view(), name='clusters'),
     path('organisatie/', OrganisatieView.as_view(), name='organisatie'),

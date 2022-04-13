@@ -38,18 +38,27 @@
             <th>Commented </th>
             <th>Comment</th>
             <th></th>
+            <th></th>
             </tr>
         </thead>
         <tbody>
             {% for post in posts %}
                 <tr> 
-                <td>{{ post.user.first_name }} {{ post.user.last_name }} </td>
-                <td>{{ post.date_posted|naturaltime }} </td>
-                <td>{{ post.text }} </td>
-                <!-- Check ik USER is authenticated, and if the USER is the commenter, if so, add column with delete -->
-                {% if request.user.is_authenticated == True and request.user == post.user %}
-                <td><a href="{% url 'delete_post' post.id %}">Delete</a></td>
-                {% endif %}
+                    <td>{{ post.user.first_name }} {{ post.user.last_name }} </td>
+                    <td>{{ post.date_posted|naturaltime }} </td>
+                    <td>{{ post.text }} </td>
+                    <!-- Check ik USER is authenticated, if so, add column with report -->
+                    {% if request.user.is_authenticated == True %}
+                    <td>
+                        <a href="{% url 'report_post' post.id %}"><span class="tag is-warning">Report</span></a>
+                    </td>
+                    {% endif %}
+                    <!-- Check ik USER is authenticated, and if the USER is the commenter, if so, add column with delete -->
+                    {% if request.user.is_authenticated == True and request.user == post.user %}
+                    <td>
+                        <a href="{% url 'delete_post' post.id %}">Delete</a>
+                    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
