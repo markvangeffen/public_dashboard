@@ -35,8 +35,8 @@
         <thead>  
             <tr>
             <th>Commenter</th>
-            <th>Commented </th>
-            <th>Comment</th>
+            <th>Commented</th>
+            <th>at </th>
             <th></th>
             <th></th>
             </tr>
@@ -45,8 +45,8 @@
             {% for post in posts %}
                 <tr> 
                     <td>{{ post.user.first_name }} {{ post.user.last_name }} </td>
-                    <td>{{ post.date_posted|naturaltime }} </td>
                     <td>{{ post.text }} </td>
+                    <td>{{ post.date_posted|naturaltime }} </td>
                     <!-- Check ik USER is authenticated, if so, add column with report -->
                     {% if request.user.is_authenticated == True %}
                     <td>

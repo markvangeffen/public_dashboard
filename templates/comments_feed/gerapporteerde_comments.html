@@ -6,20 +6,35 @@
 
 {% block second_left_block_content %} 
     <div class="left_row_content">
-    {% for post in reports %}
-            <p>
-                <strong>{{ post.user.first_name }} {{ post.user.last_name }}</strong> 
-                <small>{{ post.date_posted|naturaltime }}</small>
-                <a href="{% url 'block_user' post.user.id %}"><span class="tag is-warning">Block</span></a>
-            <br>
-            {{ post.text }} - Times reported: {{ post.times_reported }}
-            </p> 
-            <br>
-            <a class="delete"></a>
-    {% endfor %}
+        <table>
+            <thead>  
+                <tr>
+                <th>Commenter</th>
+                <th>Commented</th>
+                <th>At </th>
+                <th>Times reported</th>
+                <th>Hidden</th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for post in reports %}
+            <tr> 
+                <td>{{ post.user.first_name }} {{ post.user.last_name }}</td>
+                <td>{{ post.text }}</td>
+                <td>{{ post.date_posted|naturaltime }}</td>
+                <td>{{ post.times_reported }}</td>
+                <td>{{ post.hidden|yesno }}</td>
+                <td>
+                    <a href="{% url 'hide_post' post.id %}">Hide Post</a>
+                </td>
+                <td>
+                    <a href="{% url 'block_user' post.user.id %}">Block User</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
     </div>
 {% endblock second_left_block_content %}
 
-{% block second_right_block_content %}
-{% endblock second_right_block_content %}
 

@@ -1,9 +1,12 @@
+from datetime import datetime
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect 
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Count
 from .forms import PostForm # add this
 from .models import Post, Report
+from authO.models import User
+from django.contrib.auth import get_user_model  # add to the imports
 
 
 def Comment_Feed(request):
@@ -31,13 +34,6 @@ def Delete_Post(request, post_id):
   # redirect back to same page
   return redirect('comments_feed')
 
-# class GerapporteerdeCommentsView(TemplateView): 
-#     template_name = 'comments_feed/gerapporteerde_comments.html'
-
-@permission_required('comments_feed.view_report', raise_exception=True)
-def Gerapporteerde_Comments(request):
-  return render(request, 'comments_feed/gerapporteerde_comments.html')
-
 def Report_Post(request, post_id):
   post = Post.objects.get(id=post_id)
 
@@ -49,9 +45,35 @@ def Report_Post(request, post_id):
   return redirect('comments_feed')
   
 @permission_required('comments_feed.view_report', raise_exception=True)
-def reports(request):
-  reports = Report.objects.annotate(times_reported=Count('report')).filter(times_reported__gt=0).all()
+def Gerapporteerde_Comments(request):
+  reports = Post.objects.annotate(times_reported=Count('report')).filter(times_reported__gt=0).all().order_by('-date_posted').all()
 
   context = {'reports' : reports}
 
   return render(request, 'comments_feed/gerapporteerde_comments.html', context)
+
+@permission_required('comments_feed.change_post', raise_exception=True)
+def Hide_Post(request, post_id):
+  post = Post.objects.get(id=post_id)
+  post.hidden = True
+  post.date_hidden = datetime.now()
+  post.hidden_by = request.user
+  post.save()
+  return redirect('gerapporteerde_comments')
+
+@permission_required('comments_feed.change_user')
+def Block_User(request, user_id):
+  User = get_user_model()
+
+  user = User.objects.get(id=user_id)
+  for post in user.post_set.all():
+      if not post.hidden:
+          post.hidden = True
+          post.hidden_by = request.user
+          post.date_hidden = datetime.now()
+          post.save()
+
+  user.is_active = False
+  user.save()
+
+  return redirect('reports')

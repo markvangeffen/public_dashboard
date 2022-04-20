@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #333;
+  background-color: rgb(167, 205, 248);
   overflow-x: hidden;
   overflow-y: scroll;
   /* padding-top: 20px; */
@@ -138,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Style the top navigation bar */
 .top_navbar {
   display: flex;
-  background-color: #333;
+  background-color: rgb(167, 205, 248);
   position: fixed;
   width: calc(100% - var(--sidenav_width)); /* Same as the width of the sidenav */
   height: var(--top_navbar_width);
@@ -191,7 +191,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
 }
 
 /* Change color of the top naviagation bar on hover */

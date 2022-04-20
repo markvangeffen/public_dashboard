@@ -11,6 +11,8 @@ Now go back to the reports view. Here you can list all of the posts in the datab
 
 URL's aanpassen, href="{% url 'persoonlijk' %}", bij alle verwijzingen, referentie opgeven in plaats van harde url
 
+Nog het deactiveren van de users goed verwerken, geeft nog een foutmelding.
+
 Dan voorbeeld afmaken: https://auth0.com/blog/django-authentication/, gebleven bij: Update views.py as follows:
 En voorbeeld: https://auth0.com/blog/django-tutorial-building-and-securing-web-applications/;
 En voorbeeld: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
