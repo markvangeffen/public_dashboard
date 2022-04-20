@@ -76,4 +76,4 @@ def Block_User(request, user_id):
   user.is_active = False
   user.save()
 
-  return redirect('reports')
+  return redirect('gerapporteerde_comments')

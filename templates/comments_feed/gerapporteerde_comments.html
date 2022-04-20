@@ -14,7 +14,7 @@
                 <th>At </th>
                 <th>Times reported</th>
                 <th>Hidden</th>
-                <th></th>
+                <th>User is active</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +25,7 @@
                 <td>{{ post.date_posted|naturaltime }}</td>
                 <td>{{ post.times_reported }}</td>
                 <td>{{ post.hidden|yesno }}</td>
+                <td>{{ post.user.is_active|yesno }}</td>
                 <td>
                     <a href="{% url 'hide_post' post.id %}">Hide Post</a>
                 </td>
