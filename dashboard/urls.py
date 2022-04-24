@@ -16,7 +16,6 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from authO.views import logout
 from homepage.views import HomepageListView
 from persoonlijk.views import PersoonlijkView
 from teams.views import TeamsView
@@ -25,8 +24,6 @@ from organisatie.views import OrganisatieView
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('authO.urls')),  
-    path('', include('social_django.urls')),
     path('admin/', admin.site.urls, name='admin'),
     path('', HomepageListView.as_view(), name='home'),
     path('clusters/', ClustersView.as_view(), name='clusters'),

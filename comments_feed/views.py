@@ -5,9 +5,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Count
 from .forms import PostForm # add this
 from .models import Post, Report
-from authO.models import User
 from django.contrib.auth import get_user_model  # add to the imports
-
 
 def Comment_Feed(request):
   if request.method == 'POST':
