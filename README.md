@@ -1,8 +1,6 @@
 # dashboard
 Django_Postgres_Dashboard_Website
 
-Feature to sync local users to auth0 is paid. I did not implement the sync.
-
 # hint:
 1: check permission inside a templae in Django: https://stackoverflow.com/questions/9469590/check-permission-inside-a-template-in-django
 
